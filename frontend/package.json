@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "parcel": "^2.15.2"
+  },
+  "source": "src/index.html",
+  "targets": {
+    "default": {
+      "distDir": "../target/classes/static"
+    }
+  },
+  "scripts": {
+    "start": "parcel"
+  }
+}
