@@ -62,6 +62,12 @@ git clone https://github.com/Esteban-RG/alumnithon.git
 cd alumnithon
 ```
 
+- Genera los recursos necesarios:
+
+```bash
+ ./mvnw generate-resources
+```
+
 - Entra en la carpeta frontend:
 
 ```bash
