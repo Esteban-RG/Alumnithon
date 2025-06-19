@@ -1,7 +1,6 @@
 package com.sith.alumnithon.Config;
 
 
-import com.sith.alumnithon.Jwt.JwtAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -10,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.sith.alumnithon.Jwt.JwtAuthenticationFilter;
 
 
 @Configuration
@@ -32,6 +33,7 @@ public class SecurityConfig {
                     .disable())
                 .authorizeHttpRequests(authRequest ->
                     authRequest
+                        .requestMatchers("/**").permitAll()     // Acceso permitido por motivos de desarrollo
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/**").permitAll() // Acceso a las rutas api permitido por motivos de desarrollo
                         .anyRequest().authenticated()
