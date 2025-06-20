@@ -10,7 +10,7 @@ Aplicación web progresiva que facilita el intercambio lingüístico y cultural 
 | Tecnología      | Descripción                               |
 |----------------|-------------------------------------------|
 | 🧠 Backend      | Java 17, Spring Boot 3, Spring Data JPA   |
-| 🎨 Frontend     | React, Parcel                             |
+| 🎨 Frontend     | React, Parcel, Tailwind CSS             |
 | 🗄️ Base de datos | ------------------                                     |
 | 🛠️ Build Tool   | Maven                                     |
 
