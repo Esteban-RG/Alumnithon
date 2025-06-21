@@ -1,20 +1,13 @@
-package com.sith.alumnithon.User;
+package com.sith.alumnithon.models.User;
 
 import java.util.Collection;
 import java.util.List;
 
+import com.sith.alumnithon.models.Mentoring.Mentoring;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "user_app", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
@@ -40,6 +33,9 @@ public class User implements UserDetails{
 
     @Column(name = "email", nullable = false)
     private String email;
+
+    @OneToMany(mappedBy = "mentor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Mentoring> mentorings;
 
     public User() {
         this(null,null,null,null,null,null);

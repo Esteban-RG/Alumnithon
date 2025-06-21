@@ -1,4 +1,4 @@
-package com.sith.alumnithon.Auth;
+package com.sith.alumnithon.Config.Auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

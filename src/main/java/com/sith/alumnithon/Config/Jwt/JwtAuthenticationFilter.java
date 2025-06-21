@@ -1,4 +1,4 @@
-package com.sith.alumnithon.Jwt;
+package com.sith.alumnithon.Config.Jwt;
 
 import java.io.IOException;
 

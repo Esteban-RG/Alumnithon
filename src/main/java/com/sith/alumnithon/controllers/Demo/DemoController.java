@@ -1,4 +1,4 @@
-package com.sith.alumnithon.Demo;
+package com.sith.alumnithon.controllers.Demo;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
