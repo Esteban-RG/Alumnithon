@@ -35,7 +35,9 @@ const Login = () => {
             label="Ingresa tu contraseña:"
           />
         </div>
-        <AuthButton value="Acceder" />
+        <Link to="/dashboard">
+          <AuthButton value="Acceder" />
+        </Link>        
         <p
           className="mt-6
 										text-sm 
