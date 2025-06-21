@@ -3,7 +3,7 @@ package com.sith.alumnithon.models.User;
 import java.util.Collection;
 import java.util.List;
 
-import com.sith.alumnithon.models.Mentoring.Mentoring;
+import com.sith.alumnithon.models.Event.Event;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -35,7 +35,7 @@ public class User implements UserDetails{
     private String email;
 
     @OneToMany(mappedBy = "mentor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Mentoring> mentorings;
+    private List<Event> events;
 
     public User() {
         this(null,null,null,null,null,null);
