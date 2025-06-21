@@ -10,7 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.sith.alumnithon.Jwt.JwtAuthenticationFilter;
+import com.sith.alumnithon.Config.Jwt.JwtAuthenticationFilter;
 
 
 @Configuration
@@ -36,8 +36,11 @@ public class SecurityConfig {
                         .requestMatchers("/**").permitAll()     // Acceso permitido por motivos de desarrollo
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/**").permitAll() // Acceso a las rutas api permitido por motivos de desarrollo
+                        .requestMatchers("/h2-console/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .headers(headers -> headers
+                        .frameOptions(frameOptions -> frameOptions.disable()))
                 .sessionManagement(sessionManager ->
                 sessionManager
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
