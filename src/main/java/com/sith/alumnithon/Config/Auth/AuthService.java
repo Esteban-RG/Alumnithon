@@ -1,4 +1,4 @@
-package com.sith.alumnithon.Auth;
+package com.sith.alumnithon.Config.Auth;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -6,10 +6,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.sith.alumnithon.Jwt.JwtService;
-import com.sith.alumnithon.User.Role;
-import com.sith.alumnithon.User.User;
-import com.sith.alumnithon.User.UserRepository;
+import com.sith.alumnithon.Config.Jwt.JwtService;
+import com.sith.alumnithon.models.User.Role;
+import com.sith.alumnithon.models.User.User;
+import com.sith.alumnithon.repositories.UserRepository;
 
 @Service
 public class AuthService {
