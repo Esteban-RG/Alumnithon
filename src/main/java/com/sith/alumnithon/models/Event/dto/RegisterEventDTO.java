@@ -2,7 +2,6 @@ package com.sith.alumnithon.models.Event.dto;
 
 import com.sith.alumnithon.models.Event.CountryEvent;
 import com.sith.alumnithon.models.Event.TypeEvent;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
