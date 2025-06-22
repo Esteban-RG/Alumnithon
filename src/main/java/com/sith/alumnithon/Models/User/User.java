@@ -1,15 +1,39 @@
 package com.sith.alumnithon.Models.User;
 
+import java.sql.Date;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Language.UserLanguage;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "user_app", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails{
@@ -32,25 +56,62 @@ public class User implements UserDetails{
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "country")
+    @Enumerated(EnumType.STRING)
+    private Country country;
+
     @Column(name = "email", nullable = false)
     private String email;
 
+    @Column(name = "age")
+    private Integer age;
+
+    @Column(name = "registration_date")
+    private Date registrationDate;
+
     @OneToMany(mappedBy = "mentor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Event> events;
+    private List<Event> createdEvents;
 
-    public User() {
-        this(null,null,null,null,null,null);
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserLanguage> languages;
+
+    @ManyToMany
+    @JoinTable(
+        name = "user_following",
+        joinColumns = @JoinColumn(name = "follower_id"),
+        inverseJoinColumns = @JoinColumn(name = "followed_id")
+    )
+    private Set<User> following = new HashSet<>();
+
+    @ManyToMany(mappedBy = "following")
+    private Set<User> followers = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "user_event",
+        joinColumns =  @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private Set<Event> events = new HashSet<>();
+
+
+    public void follow(User userToFollow) {
+        this.following.add(userToFollow);
+        userToFollow.getFollowers().add(this);
     }
 
-    public User(String firstname, String lastname, String username, String password, Role role, String email) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.email = email;
+    public void unfollow(User userToUnfollow) {
+        this.following.remove(userToUnfollow);
+        userToUnfollow.getFollowers().remove(this);
     }
 
+
+
+    // Setters and Getters
+    
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
 
     public Long getId() {
         return id;
@@ -112,6 +173,59 @@ public class User implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Date getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public List<UserLanguage> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<UserLanguage> languages) {
+        this.languages = languages;
+    }
+
+    public Set<User> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<User> following) {
+        this.following = following;
+    }
+
+    public Set<User> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<User> followers) {
+        this.followers = followers;
+    }
+
+    public void setCreatedEvents(List<Event> createdEvents) {
+        this.createdEvents = createdEvents;
     }
 
 

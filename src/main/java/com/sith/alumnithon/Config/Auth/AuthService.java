@@ -1,5 +1,7 @@
 package com.sith.alumnithon.Config.Auth;
 
+import java.sql.Date;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,13 +38,15 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request){
         String encodedPassword = passwordEncoder.encode(request.password());
 
-        User user =new User();
-        user.setUsername(request.username());
-        user.setPassword(encodedPassword);
-        user.setFirstname(request.firstname());
-        user.setLastname(request.lastname());
-        user.setEmail(request.email());
-        user.setRole(Role.USER);
+        User user = User.builder()
+            .username(request.username())
+            .password(encodedPassword)
+            .firstname(request.firstname())
+            .lastname(request.lastname())
+            .email(request.email())
+            .role(Role.USER)
+            .registrationDate(new Date(System.currentTimeMillis()))
+            .build();
 
         userRepository.save(user);
 

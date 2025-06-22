@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
+import com.sith.alumnithon.Models.Language.Language;
 import com.sith.alumnithon.Models.User.User;
 
 @NoArgsConstructor
@@ -29,7 +32,8 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private CountryEvent country;
 
-    private String language;
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
     private String languageLevel;
 
@@ -43,6 +47,9 @@ public class Event {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mentor_id")
     private User mentor;
+
+    @ManyToMany(mappedBy = "events")
+    private Set<User> participants = new HashSet<>();
 
     public Event(RegisterEventDTO dto, User mentor) {
         this.title = dto.title();
@@ -74,7 +81,7 @@ public class Event {
         return country;
     }
 
-    public String getLanguage() {
+    public Language getLanguage() {
         return language;
     }
 

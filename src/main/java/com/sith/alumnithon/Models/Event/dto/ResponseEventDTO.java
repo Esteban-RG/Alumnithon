@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.sith.alumnithon.Models.Event.CountryEvent;
 import com.sith.alumnithon.Models.Event.Event;
 import com.sith.alumnithon.Models.Event.TypeEvent;
+import com.sith.alumnithon.Models.Language.Language;
 
 public record ResponseEventDTO(
 
@@ -13,7 +14,7 @@ public record ResponseEventDTO(
         String description,
         TypeEvent type,
         CountryEvent country,
-        String language,
+        Language language,
         String languageLevel,
         LocalDateTime startDate,
         LocalDateTime endDate,
