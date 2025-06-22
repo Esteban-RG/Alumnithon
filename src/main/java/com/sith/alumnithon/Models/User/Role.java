@@ -1,4 +1,4 @@
-package com.sith.alumnithon.models.User;
+package com.sith.alumnithon.Models.User;
 
 public enum Role {
     ADMIN,

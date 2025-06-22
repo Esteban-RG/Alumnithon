@@ -1,10 +1,10 @@
-package com.sith.alumnithon.models.Event.dto;
-
-import com.sith.alumnithon.models.Event.CountryEvent;
-import com.sith.alumnithon.models.Event.Event;
-import com.sith.alumnithon.models.Event.TypeEvent;
+package com.sith.alumnithon.Models.Event.dto;
 
 import java.time.LocalDateTime;
+
+import com.sith.alumnithon.Models.Event.CountryEvent;
+import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Event.TypeEvent;
 
 public record ResponseEventDTO(
 

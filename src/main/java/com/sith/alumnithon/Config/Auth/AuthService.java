@@ -7,9 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sith.alumnithon.Config.Jwt.JwtService;
-import com.sith.alumnithon.models.User.Role;
-import com.sith.alumnithon.models.User.User;
-import com.sith.alumnithon.repositories.UserRepository;
+import com.sith.alumnithon.Models.User.Role;
+import com.sith.alumnithon.Models.User.User;
+import com.sith.alumnithon.Repositories.UserRepository;
 
 @Service
 public class AuthService {

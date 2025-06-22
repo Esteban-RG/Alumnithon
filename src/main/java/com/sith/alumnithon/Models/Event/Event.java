@@ -1,12 +1,13 @@
-package com.sith.alumnithon.models.Event;
+package com.sith.alumnithon.Models.Event;
 
-import com.sith.alumnithon.models.Event.dto.RegisterEventDTO;
-import com.sith.alumnithon.models.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+
+import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
+import com.sith.alumnithon.Models.User.User;
 
 @NoArgsConstructor
 @AllArgsConstructor

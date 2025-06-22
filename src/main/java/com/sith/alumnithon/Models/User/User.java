@@ -1,13 +1,14 @@
-package com.sith.alumnithon.models.User;
+package com.sith.alumnithon.Models.User;
 
 import java.util.Collection;
 import java.util.List;
 
-import com.sith.alumnithon.models.Event.Event;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.sith.alumnithon.Models.Event.Event;
 
 @Entity
 @Table(name = "user_app", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
