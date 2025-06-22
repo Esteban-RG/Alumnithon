@@ -1,19 +1,19 @@
-package com.sith.alumnithon.models.Event.dto;
-
-import com.sith.alumnithon.models.Event.CountryEvent;
-import com.sith.alumnithon.models.Event.Event;
-import com.sith.alumnithon.models.Event.TypeEvent;
+package com.sith.alumnithon.Models.Event.dto;
 
 import java.time.LocalDateTime;
 
-public record ResponseEventDTO(
+import com.sith.alumnithon.Models.Event.CountryEvent;
+import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Event.TypeEvent;
+import com.sith.alumnithon.Models.Language.Language;
 
-        Long id,
+public record ListEventsDTO(
+
         String title,
         String description,
         TypeEvent type,
         CountryEvent country,
-        String language,
+        Language language,
         String languageLevel,
         LocalDateTime startDate,
         LocalDateTime endDate,
@@ -21,8 +21,8 @@ public record ResponseEventDTO(
 
 ) {
 
-    public ResponseEventDTO(Event event) {
-        this(event.getId(), event.getTitle(), event.getDescription(),
+    public ListEventsDTO(Event event) {
+        this(event.getTitle(), event.getDescription(),
                 event.getType(), event.getCountry(), event.getLanguage(),
                 event.getLanguageLevel(), event.getStartDate(),
                 event.getEndDate(), event.getMentor().getId());

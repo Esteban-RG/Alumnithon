@@ -1,10 +1,11 @@
-package com.sith.alumnithon.controllers;
+package com.sith.alumnithon.Controllers;
 
-import com.sith.alumnithon.models.Event.Event;
-import com.sith.alumnithon.models.Event.dto.ListEventsDTO;
-import com.sith.alumnithon.models.Event.dto.RegisterEventDTO;
-import com.sith.alumnithon.models.Event.dto.ResponseEventDTO;
-import com.sith.alumnithon.services.EventService;
+import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Event.dto.ListEventsDTO;
+import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
+import com.sith.alumnithon.Models.Event.dto.ResponseEventDTO;
+import com.sith.alumnithon.Services.EventService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
