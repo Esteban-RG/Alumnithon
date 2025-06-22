@@ -1,11 +1,12 @@
-package com.sith.alumnithon.repositories;
+package com.sith.alumnithon.Repositories;
 
 import java.util.Optional;
 
-import com.sith.alumnithon.models.User.Role;
-import com.sith.alumnithon.models.User.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.sith.alumnithon.Models.User.Role;
+import com.sith.alumnithon.Models.User.User;
 
 @Repository
 public interface UserRepository  extends JpaRepository <User, Long>{

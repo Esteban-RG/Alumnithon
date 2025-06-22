@@ -1,4 +1,4 @@
-package com.sith.alumnithon.models.Event;
+package com.sith.alumnithon.Models.Event;
 
 public enum CountryEvent {
 
