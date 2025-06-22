@@ -1,7 +1,7 @@
-const AuthInput = ({ type, placeholder, label }) => {
-  const ClassesLabel = `text-white font-semibold`;
+const AuthInput = ({ type, placeholder, label, name, value, onChange }) => {
+  const classesLabel = `text-white font-semibold`;
 
-  const ClassesInput = `
+  const classesInput = `
     w-full
     p-3
     bg-gray-700
@@ -12,8 +12,15 @@ const AuthInput = ({ type, placeholder, label }) => {
 
   return (
     <>
-      <label className={ClassesLabel}>{label}</label>
-      <input type={type} placeholder={placeholder} className={ClassesInput} />
+      <label className={classesLabel}>{label}</label>
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        className={classesInput}
+      />
     </>
   );
 };
