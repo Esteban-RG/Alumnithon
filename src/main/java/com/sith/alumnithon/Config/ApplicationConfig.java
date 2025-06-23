@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.sith.alumnithon.User.UserRepository;
+import com.sith.alumnithon.Repositories.UserRepository;
 
 @Configuration
 public class ApplicationConfig {
