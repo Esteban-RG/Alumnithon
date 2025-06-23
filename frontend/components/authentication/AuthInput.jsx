@@ -4,9 +4,9 @@ const AuthInput = ({ type, placeholder, label, name, value, onChange }) => {
   const classesInput = `
     w-full
     p-3
-    bg-gray-700
+    bg-stone-400
     rounded-lg
-    text-white
+    text-black
     placeholder-gray-400
   `;
 
