@@ -15,15 +15,14 @@ const LogoutButton = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <button className="bg-black
-												text-white 
-												font-semibold 
-												rounded-full
-												mx-auto
-												px-6 
-												py-2 
-												text-sm"
-						onClick={handleLogout}>
+    <button className="block
+                        text-center
+                        text-gray-700
+                        text-sm
+                        font-semibold
+                        hover:underline
+                        mx-auto"
+      onClick={handleLogout}>
       Cerrar Sesión
     </button>
   );

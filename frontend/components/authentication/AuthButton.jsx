@@ -1,5 +1,5 @@
 const AuthButton = ({ value }) => {
-  const Classes = `
+	const classes = `
     w-full
 		bg-white 
 		text-black 
@@ -8,7 +8,7 @@ const AuthButton = ({ value }) => {
 		rounded-lg
   `;
 
-  return <button className={Classes}>{value}</button>;
+	return <button className={classes}>{value}</button>;
 };
 
 export default AuthButton;

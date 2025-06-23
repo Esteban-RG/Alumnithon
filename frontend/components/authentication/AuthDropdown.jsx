@@ -1,8 +1,8 @@
 const AuthDropdown = ({ label, dataType, objectsList }) => {
-  
-  const ClassesLabel = `text-white font-semibold`
-  
-  const ClassesSelect = `
+
+  const classesLabel = `text-white font-semibold`
+
+  const classesSelect = `
     w-full
     p-3
     bg-gray-700
@@ -13,8 +13,8 @@ const AuthDropdown = ({ label, dataType, objectsList }) => {
 
   return (
     <>
-      <label className={ClassesLabel}>{label}</label>
-      <select className={ClassesSelect} name={dataType} id={dataType}>
+      <label className={classesLabel}>{label}</label>
+      <select className={classesSelect} name={dataType} id={dataType}>
         {objectsList.map((element) => (
           <option key={element}>
             {element}
