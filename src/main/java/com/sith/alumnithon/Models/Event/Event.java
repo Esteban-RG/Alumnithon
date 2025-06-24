@@ -3,6 +3,7 @@ package com.sith.alumnithon.Models.Event;
 import com.sith.alumnithon.Models.CommunicationChannel.CommunicationChannel;
 import com.sith.alumnithon.Models.Interest.Interest;
 import com.sith.alumnithon.Models.Language.Level;
+import com.sith.alumnithon.Models.Event.dto.UpdateEventDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -50,10 +51,10 @@ public class Event {
     private StateEvent state;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mentor_id")
-    private User mentor;
+    @JoinColumn(name = "moderator_id")
+    private User moderator;
 
-    @ManyToMany(mappedBy = "events")
+    @ManyToMany(mappedBy = "events", fetch = FetchType.LAZY)
     private Set<User> participants = new HashSet<>();
 
     @ManyToMany
@@ -67,14 +68,17 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<CommunicationChannel> communicationChannels;
 
-    public Event(RegisterEventDTO dto, User mentor) {
+    public Event(RegisterEventDTO dto, User moderator) {
         this.title = dto.title();
         this.description = dto.description();
         this.type = dto.type();
         this.country = dto.country();
+        this.language = dto.language();
+        this.languageLevel = dto.languageLevel();
+        this.startDate = dto.startDate();
         this.endDate = dto.endDate();
         this.state = StateEvent.STARTED;
-        this.mentor = mentor;
+        this.moderator = moderator;
     }
 
     public Long getId() {
@@ -117,7 +121,37 @@ public class Event {
         return state;
     }
 
-    public User getMentor() {
-        return mentor;
+    public User getModerator() {
+        return moderator;
+    }
+
+    public void updateEvent(UpdateEventDTO dto) {
+        if (dto.title() != null) {
+            this.title = dto.title();
+        }
+        if (dto.description() != null) {
+            this.description = dto.description();
+        }
+        if (dto.type() != null) {
+            this.type = dto.type();
+        }
+        if (dto.country() != null) {
+            this.country = dto.country();
+        }
+        if (dto.language() != null) {
+            this.language = dto.language();
+        }
+        if (dto.languageLevel() != null) {
+            this.languageLevel = dto.languageLevel();
+        }
+        if (dto.startDate() != null) {
+            this.startDate = dto.startDate();
+        }
+        if (dto.endDate() != null) {
+            this.endDate = dto.endDate();
+        }
+        if (dto.state() != null) {
+            this.state = dto.state();
+        }
     }
 }
