@@ -43,7 +43,9 @@ public class AuthService {
             .password(encodedPassword)
             .firstname(request.firstname())
             .lastname(request.lastname())
+            .country(request.country())
             .email(request.email())
+            .age(request.age())
             .role(Role.USER)
             .registrationDate(new Date(System.currentTimeMillis()))
             .build();

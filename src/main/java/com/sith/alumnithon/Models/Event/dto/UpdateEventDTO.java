@@ -1,13 +1,14 @@
 package com.sith.alumnithon.Models.Event.dto;
 
-import java.time.LocalDateTime;
-
 import com.sith.alumnithon.Models.Event.CountryEvent;
-import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Event.StateEvent;
 import com.sith.alumnithon.Models.Event.TypeEvent;
 import com.sith.alumnithon.Models.Language.Language;
+import jakarta.validation.constraints.NotNull;
 
-public record ListEventsDTO(
+import java.time.LocalDateTime;
+
+public record UpdateEventDTO(
 
         String title,
         String description,
@@ -17,15 +18,9 @@ public record ListEventsDTO(
         String languageLevel,
         LocalDateTime startDate,
         LocalDateTime endDate,
-        Long idMentor
+        StateEvent state,
+        @NotNull
+        Long idModerator
 
 ) {
-
-    public ListEventsDTO(Event event) {
-        this(event.getTitle(), event.getDescription(),
-                event.getType(), event.getCountry(), event.getLanguage(),
-                event.getLanguageLevel(), event.getStartDate(),
-                event.getEndDate(), event.getModerator().getId());
-    }
-
 }
