@@ -1,6 +1,9 @@
 package com.sith.alumnithon.Models.Event;
 
+import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
 import com.sith.alumnithon.Models.Event.dto.UpdateEventDTO;
+import com.sith.alumnithon.Models.Language.Language;
+import com.sith.alumnithon.Models.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -8,10 +11,6 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-
-import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
-import com.sith.alumnithon.Models.Language.Language;
-import com.sith.alumnithon.Models.User.User;
 
 @NoArgsConstructor
 @AllArgsConstructor
