@@ -6,12 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.sith.alumnithon.Models.Interest.Interest;
+import com.sith.alumnithon.Models.Language.UserLanguageInterest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sith.alumnithon.Models.Event.Event;
-import com.sith.alumnithon.Models.Language.UserLanguage;
+import com.sith.alumnithon.Models.Language.UserLanguageSpoken;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -73,13 +75,17 @@ public class User implements UserDetails{
     private List<Event> createdEvents;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<UserLanguage> languages;
+    private List<UserLanguageSpoken> languagesSpoken;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserLanguageInterest> languagesInterest;
 
     @ManyToMany
     @JoinTable(
         name = "user_following",
         joinColumns = @JoinColumn(name = "follower_id"),
         inverseJoinColumns = @JoinColumn(name = "followed_id")
+
     )
     private Set<User> following = new HashSet<>();
 
@@ -105,7 +111,13 @@ public class User implements UserDetails{
         userToUnfollow.getFollowers().remove(this);
     }
 
-
+    @ManyToMany
+    @JoinTable(
+            name = "user_interest",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "interest_id")
+    )
+    private Set<Interest> interests = new HashSet<>();
 
     // Setters and Getters
     
@@ -200,12 +212,12 @@ public class User implements UserDetails{
         this.registrationDate = registrationDate;
     }
 
-    public List<UserLanguage> getLanguages() {
-        return languages;
+    public List<UserLanguageSpoken> getLanguagesSpoken() {
+        return languagesSpoken;
     }
 
-    public void setLanguages(List<UserLanguage> languages) {
-        this.languages = languages;
+    public void setLanguagesSpoken(List<UserLanguageSpoken> languagesSpoken) {
+        this.languagesSpoken = languagesSpoken;
     }
 
     public Set<User> getFollowing() {
@@ -228,7 +240,11 @@ public class User implements UserDetails{
         this.createdEvents = createdEvents;
     }
 
+    public List<UserLanguageInterest> getLanguagesInterest() {
+        return languagesInterest;
+    }
 
-    
-
+    public void setLanguagesInterest(List<UserLanguageInterest> languagesInterest) {
+        this.languagesInterest = languagesInterest;
+    }
 }
