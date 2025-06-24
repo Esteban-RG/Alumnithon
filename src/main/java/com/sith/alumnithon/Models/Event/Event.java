@@ -1,5 +1,8 @@
 package com.sith.alumnithon.Models.Event;
 
+import com.sith.alumnithon.Models.CommunicationChannel.CommunicationChannel;
+import com.sith.alumnithon.Models.Interest.Interest;
+import com.sith.alumnithon.Models.Language.Level;
 import com.sith.alumnithon.Models.Event.dto.UpdateEventDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +10,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
@@ -16,7 +20,7 @@ import com.sith.alumnithon.Models.User.User;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Event")
-@Table(name = "events")
+@Table(name = "event")
 public class Event {
 
     @Id
@@ -36,7 +40,8 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private Language language;
 
-    private String languageLevel;
+    @Enumerated(EnumType.STRING)
+    private Level languageLevel;
 
     private LocalDateTime startDate;
 
@@ -51,6 +56,17 @@ public class Event {
 
     @ManyToMany(mappedBy = "events", fetch = FetchType.LAZY)
     private Set<User> participants = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+            name = "event_interest",
+            joinColumns = @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "interest_id")
+    )
+    private Set<Interest> interests = new HashSet<>();
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    private List<CommunicationChannel> communicationChannels;
 
     public Event(RegisterEventDTO dto, User moderator) {
         this.title = dto.title();
@@ -89,7 +105,7 @@ public class Event {
         return language;
     }
 
-    public String getLanguageLevel() {
+    public Level getLanguageLevel() {
         return languageLevel;
     }
 
