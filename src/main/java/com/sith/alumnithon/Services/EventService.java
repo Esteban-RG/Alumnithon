@@ -24,7 +24,7 @@ public class EventService {
     private EventRepository eventRepository;
 
     public Event register(@Valid RegisterEventDTO dto) {
-        User mentor = userRepository.findByIdAndRole(dto.idMentor(), Role.USER); //Debe ser Role.MENTOR
+        User mentor = userRepository.findByIdAndRole(dto.idMentor(), Role.MENTOR); //Debe ser Role.MENTOR
         return eventRepository.save(new Event(dto, mentor));
     }
 
