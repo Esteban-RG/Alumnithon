@@ -34,7 +34,7 @@ public record ListEventsDTO(
         this(event.getTitle(), event.getDescription(),
                 event.getType(), event.getCountry(), event.getLanguage(),
                 event.getLanguageLevel(), event.getStartDate(),
-                event.getEndDate(), event.getMentor().getId(), event.getCommunicationChannels(),
+                event.getEndDate(), event.getModerator().getId(), event.getCommunicationChannels(),
                 event.getInterests(), event.getParticipants());
     }
 

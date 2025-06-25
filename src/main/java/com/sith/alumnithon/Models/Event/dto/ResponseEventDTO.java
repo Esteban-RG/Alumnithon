@@ -35,7 +35,7 @@ public record ResponseEventDTO(
         this(event.getId(), event.getTitle(), event.getDescription(),
                 event.getType(), event.getCountry(), event.getLanguage(),
                 event.getLanguageLevel(), event.getStartDate(),
-                event.getEndDate(), event.getMentor().getId(),
+                event.getEndDate(), event.getModerator().getId(),
                 event.getCommunicationChannels(),
                 event.getInterests(), event.getParticipants());
     }
