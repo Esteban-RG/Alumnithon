@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.sith.alumnithon.Models.Event.CountryEvent;
 import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Event.StateEvent;
 import com.sith.alumnithon.Models.Event.TypeEvent;
 import com.sith.alumnithon.Models.Language.Language;
 
@@ -18,6 +19,7 @@ public record ResponseEventDTO(
         String languageLevel,
         LocalDateTime startDate,
         LocalDateTime endDate,
+        StateEvent state,
         Long idMentor
 
 ) {
@@ -25,8 +27,8 @@ public record ResponseEventDTO(
     public ResponseEventDTO(Event event) {
         this(event.getId(), event.getTitle(), event.getDescription(),
                 event.getType(), event.getCountry(), event.getLanguage(),
-                event.getLanguageLevel(), event.getStartDate(),
-                event.getEndDate(), event.getMentor().getId());
+                event.getLanguageLevel(), event.getStartDate(), event.getEndDate(),
+                event.getState(), event.getModerator().getId());
     }
 
 }
