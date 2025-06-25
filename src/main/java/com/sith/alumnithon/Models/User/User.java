@@ -100,6 +100,13 @@ public class User implements UserDetails{
     )
     private Set<Event> events = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_interest",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "interest_id")
+    )
+    private Set<Interest> interests = new HashSet<>();
 
     public void follow(User userToFollow) {
         this.following.add(userToFollow);
@@ -111,13 +118,6 @@ public class User implements UserDetails{
         userToUnfollow.getFollowers().remove(this);
     }
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_interest",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "interest_id")
-    )
-    private Set<Interest> interests = new HashSet<>();
 
     // Setters and Getters
     

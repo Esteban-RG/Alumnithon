@@ -1,5 +1,6 @@
 package com.sith.alumnithon.Models.Interest;
 
+import com.sith.alumnithon.Models.Event.Event;
 import com.sith.alumnithon.Models.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,11 +24,11 @@ public class Interest {
     @Enumerated(EnumType.STRING)
     private TypeInterest type;
 
-    @ManyToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "interests")
     private Set<User> users = new HashSet<>();
 
-    @ManyToMany(mappedBy = "event")
-    private Set<User> events = new HashSet<>();
+    @ManyToMany(mappedBy = "interests")
+    private Set<Event> events = new HashSet<>();
 
     //Setters y Getters
 
