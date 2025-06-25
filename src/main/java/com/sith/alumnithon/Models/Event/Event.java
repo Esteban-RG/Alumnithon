@@ -120,4 +120,28 @@ public class Event {
     public User getMentor() {
         return mentor;
     }
+
+    public List<CommunicationChannel> getCommunicationChannels() {
+        return communicationChannels;
+    }
+
+    public void setCommunicationChannels(List<CommunicationChannel> communicationChannels) {
+        this.communicationChannels = communicationChannels;
+    }
+
+    public Set<Interest> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(Set<Interest> interests) {
+        this.interests = interests;
+    }
+
+    public Set<User> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<User> participants) {
+        this.participants = participants;
+    }
 }
