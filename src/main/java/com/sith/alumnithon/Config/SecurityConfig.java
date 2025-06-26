@@ -1,8 +1,10 @@
 package com.sith.alumnithon.Config;
 
 
+import java.sql.Date;
 import java.util.List;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -16,6 +18,10 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.sith.alumnithon.Config.Jwt.JwtAuthenticationFilter;
+import com.sith.alumnithon.Models.User.Country;
+import com.sith.alumnithon.Models.User.Role;
+import com.sith.alumnithon.Models.User.User;
+import com.sith.alumnithon.Repositories.UserRepository;
 
 
 @Configuration
@@ -28,6 +34,25 @@ public class SecurityConfig {
     SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, AuthenticationProvider authProvider) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.authProvider = authProvider;
+    }
+
+    @Bean
+    CommandLineRunner initUsers(UserRepository repository) {
+        return args -> {
+            User user = User.builder()
+            .username("admin")
+            .password("admin")
+            .firstname("Jhon")
+            .lastname("Doe")
+            .country(Country.MEXICO)
+            .email("jhondoe@admin.com")
+            .age(20)
+            .role(Role.ADMIN)
+            .registrationDate(new Date(System.currentTimeMillis()))
+            .build();
+
+            repository.save(user);
+        };
     }
 
     @Bean

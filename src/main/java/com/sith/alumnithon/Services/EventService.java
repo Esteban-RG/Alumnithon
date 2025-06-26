@@ -9,8 +9,6 @@ import com.sith.alumnithon.Models.User.Role;
 import com.sith.alumnithon.Models.User.User;
 import com.sith.alumnithon.Repositories.EventRepository;
 import com.sith.alumnithon.Repositories.UserRepository;
-
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +24,7 @@ public class EventService {
     private EventRepository eventRepository;
 
     public Event register(RegisterEventDTO dto) {
-        User mentor = userRepository.findByIdAndRole(dto.idModerator(), Role.USER); //Debe ser Role.MENTOR
+        User mentor = userRepository.findByIdAndRole(dto.idModerator(), Role.USER);
         return eventRepository.save(new Event(dto, mentor));
     }
 

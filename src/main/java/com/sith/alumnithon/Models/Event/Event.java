@@ -1,9 +1,12 @@
 package com.sith.alumnithon.Models.Event;
 
 import com.sith.alumnithon.Models.CommunicationChannel.CommunicationChannel;
-import com.sith.alumnithon.Models.Interest.Interest;
-import com.sith.alumnithon.Models.Language.Level;
+import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
 import com.sith.alumnithon.Models.Event.dto.UpdateEventDTO;
+import com.sith.alumnithon.Models.Interest.Interest;
+import com.sith.alumnithon.Models.Language.Language;
+import com.sith.alumnithon.Models.User.User;
+import com.sith.alumnithon.Models.Language.Level;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -12,10 +15,6 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.sith.alumnithon.Models.Event.dto.RegisterEventDTO;
-import com.sith.alumnithon.Models.Language.Language;
-import com.sith.alumnithon.Models.User.User;
 
 @NoArgsConstructor
 @AllArgsConstructor
