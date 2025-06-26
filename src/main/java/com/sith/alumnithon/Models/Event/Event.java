@@ -50,13 +50,13 @@ public class Event {
     private StateEvent state;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "moderator_id")
-    private User moderator;
+    @JoinColumn(name = "mentor_id")
+    private User mentor;
 
     @ManyToMany(mappedBy = "events", fetch = FetchType.LAZY)
     private Set<User> participants = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "event_interest",
             joinColumns = @JoinColumn(name = "event_id"),
@@ -67,7 +67,7 @@ public class Event {
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     private List<CommunicationChannel> communicationChannels;
 
-    public Event(RegisterEventDTO dto, User moderator) {
+    public Event(RegisterEventDTO dto, User mentor) {
         this.title = dto.title();
         this.description = dto.description();
         this.type = dto.type();
@@ -77,7 +77,9 @@ public class Event {
         this.startDate = dto.startDate();
         this.endDate = dto.endDate();
         this.state = StateEvent.STARTED;
-        this.moderator = moderator;
+        this.mentor = mentor;
+        this.interests = dto.interests();
+
     }
 
     public Long getId() {
@@ -120,8 +122,8 @@ public class Event {
         return state;
     }
 
-    public User getModerator() {
-        return moderator;
+    public User getMentor() {
+        return mentor;
     }
 
     public void updateEvent(UpdateEventDTO dto) {

@@ -27,10 +27,10 @@ public record RegisterEventDTO(
         @NotNull(message = "Please choose a country for mentoring")
         CountryEvent country,
 
-        @NotBlank(message = "Please choose a language")
+        @NotNull(message = "Please choose a language")
         Language language,
 
-        @NotBlank(message = "Please choose your language level")
+        @NotNull(message = "Please choose your language level")
         Level languageLevel,
 
         @NotNull(message = "Please introduce a date to start the mentoring")
