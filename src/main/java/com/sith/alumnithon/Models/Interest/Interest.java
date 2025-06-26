@@ -27,7 +27,7 @@ public class Interest {
     @ManyToMany(mappedBy = "interests")
     private Set<User> users = new HashSet<>();
 
-    @ManyToMany(mappedBy = "interests")
+    @ManyToMany(mappedBy = "interests", cascade = CascadeType.PERSIST)
     private Set<Event> events = new HashSet<>();
 
     //Setters y Getters
@@ -40,11 +40,11 @@ public class Interest {
         this.id = id;
     }
 
-    public TypeInterest getKind() {
+    public TypeInterest getType() {
         return type;
     }
 
-    public void setKind(TypeInterest type) {
+    public void setType(TypeInterest type) {
         this.type = type;
     }
 }

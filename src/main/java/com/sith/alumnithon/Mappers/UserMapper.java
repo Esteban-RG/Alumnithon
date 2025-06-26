@@ -34,7 +34,7 @@ public class UserMapper {
                 .map(l -> new LanguageSpokenDTO(l.getLanguage(), l.getLevel()))
                 .collect(Collectors.toList()),
             user.getInterests().stream()
-                .map(i -> i.getKind())
+                .map(i -> i.getType())
                 .collect(Collectors.toList())
         );
     }
