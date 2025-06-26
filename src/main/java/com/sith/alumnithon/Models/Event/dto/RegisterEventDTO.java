@@ -1,5 +1,6 @@
 package com.sith.alumnithon.Models.Event.dto;
 
+import com.sith.alumnithon.Models.Interest.Interest;
 import com.sith.alumnithon.Models.Language.Language;
 import com.sith.alumnithon.Models.Language.Level;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import com.sith.alumnithon.Models.Event.CountryEvent;
 import com.sith.alumnithon.Models.Event.TypeEvent;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public record RegisterEventDTO(
 
@@ -25,7 +27,7 @@ public record RegisterEventDTO(
         @NotNull(message = "Please choose a country for mentoring")
         CountryEvent country,
 
-        @NotNull(message = "Please choose a language")
+        @NotBlank(message = "Please choose a language")
         Language language,
 
         @NotBlank(message = "Please choose your language level")
@@ -39,8 +41,10 @@ public record RegisterEventDTO(
         @DateTimeFormat(pattern = "dd/MM/yyyy")
         LocalDateTime endDate,
 
-        @NotNull(message = "Please introduce an id of moderator")
-        Long idModerator
+        @NotNull(message = "Please introduce an id of mentor")
+        Long idMentor,
 
+        @NotNull(message = "Please introduce at least an interests")
+        Set<Interest> interests
 ) {
 }
