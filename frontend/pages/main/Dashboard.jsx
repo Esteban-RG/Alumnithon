@@ -24,8 +24,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="bg-orange-50 min-h-screen font-sans">
-      <Header />
+    <div className="bg-background min-h-screen font-sans">
+      <Header className="" />
       <main className="px-6 pb-24">
         <MainTitle
           title="¡Bienvenido, Usuario!"

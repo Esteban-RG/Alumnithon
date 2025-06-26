@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #000000;  /* color negro */
+  --color-secondary: #777777; /* color gris oscuro */
+  --color-surface: #F4DFC8; /* color beige */
+  --color-background: #F4EAE0; /* color beige claro */
+  --color-off-white-theme: #FAF6F0; /* color blanco ligeramente más oscuro */
+  --color-white: #ffffff; /* color blanco */
+}
