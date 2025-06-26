@@ -42,13 +42,13 @@ public class UserController {
     
     @Operation(summary = "Endpoint para listar un usuario mediante el id")
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getProductById(@PathVariable Long id){
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id){
         return userService.getById(id)
         .map(ResponseEntity::ok)
         .orElse(ResponseEntity.notFound().build());
     }
 
-    @Operation(summary = "Endpoint para eliminar un usuario mediante el ")
+    @Operation(summary = "Endpoint para eliminar un usuario mediante el id")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         return userService.delete(id)
