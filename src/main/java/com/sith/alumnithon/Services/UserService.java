@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.sith.alumnithon.Models.Language.DTO.LanguageSpokenDTO;
+import com.sith.alumnithon.Mappers.UserMapper;
 import com.sith.alumnithon.Models.User.User;
-import com.sith.alumnithon.Models.User.DTO.UserConnectionsDTO;
+import com.sith.alumnithon.Models.User.DTO.PersonalInfoDTO;
 import com.sith.alumnithon.Models.User.DTO.UserDTO;
 import com.sith.alumnithon.Repositories.UserRepository;
 
@@ -20,46 +20,57 @@ import lombok.AllArgsConstructor;
 public class UserService {
 
     private UserRepository userRepository;
+    private UserMapper userMapper;
 
     @Transactional
     public List<UserDTO> getAll(){
         return userRepository.findAll()
         .stream()
-        .map(user -> new UserDTO(
-            user.getFirstname(),
-            user.getLastname(),
-            user.getUsername(),
-            user.getCountry(),
-            user.getEmail(),
-            user.getAge(),
-            user.getRegistrationDate(),
-            user.getFollowers().stream().map(follower -> new UserConnectionsDTO( follower.getUsername())).collect(Collectors.toList()),
-            user.getFollowing().stream().map(followed -> new UserConnectionsDTO( followed.getUsername())).collect(Collectors.toList()),
-            user.getLanguagesInterest().stream().map( interest ->  interest.getLanguage()).collect(Collectors.toList()),
-            user.getLanguagesSpoken().stream().map(language -> new LanguageSpokenDTO(language.getLanguage(),language.getLevel())).collect(Collectors.toList()),
-            user.getInterests().stream().map(interest -> interest.getKind()).collect(Collectors.toList())
-        )).collect(Collectors.toList());
+        .map(user -> userMapper.toDto(user)).collect(Collectors.toList());
     }
 
     @Transactional
     public Optional<UserDTO> getById(Long id){
         return userRepository.findById(id)
-        .map(user -> new UserDTO(
-            user.getFirstname(),
-            user.getLastname(),
-            user.getUsername(),
-            user.getCountry(),
-            user.getEmail(),
-            user.getAge(),
-            user.getRegistrationDate(),
-            user.getFollowers().stream().map(follower -> new UserConnectionsDTO( follower.getUsername())).collect(Collectors.toList()),
-            user.getFollowing().stream().map(followed -> new UserConnectionsDTO( followed.getUsername())).collect(Collectors.toList()),
-            user.getLanguagesInterest().stream().map( interest ->  interest.getLanguage()).collect(Collectors.toList()),
-            user.getLanguagesSpoken().stream().map(language -> new LanguageSpokenDTO(language.getLanguage(),language.getLevel())).collect(Collectors.toList()),
-            user.getInterests().stream().map(interest -> interest.getKind()).collect(Collectors.toList())
-        ));
+        .map(user -> userMapper.toDto(user));
     }
 
+    @Transactional
+    public Optional<User> updatePersonalInfo(Long id, PersonalInfoDTO newData){
+
+        return userRepository.findById(id)
+            .map(existing -> {
+                existing.setUsername(newData.username());
+                existing.setFirstname(newData.firstname());
+                existing.setLastname(newData.lastname());
+                existing.setEmail(newData.email());
+                existing.setCountry(newData.country());
+                existing.setAge(newData.age());
+
+                return userRepository.save(existing);
+            }
+        );
+    }
+
+    @Transactional
+    public void followUser(String username, Long followedId){
+        User follower = userRepository.findByUsername(username).orElseThrow( () -> new RuntimeException("User not found"));
+        User followed = userRepository.findById(followedId).orElseThrow( () -> new RuntimeException("User not found"));
+
+        if (follower.follow(followed)) {
+            userRepository.save(follower);
+        }
+    }
+
+    @Transactional
+    public void unfollowUser(String username, Long followedId){
+        User follower = userRepository.findByUsername(username).orElseThrow( () -> new RuntimeException("User not found"));
+        User followed = userRepository.findById(followedId).orElseThrow( () -> new RuntimeException("User not found"));
+
+        if (follower.unfollow(followed)) {
+            userRepository.save(follower);
+        }
+    }
 
     @Transactional
     public boolean delete(Long id) {
@@ -74,5 +85,7 @@ public class UserService {
         userRepository.delete(user);
         return true;
     }
+
+    
 
 }
