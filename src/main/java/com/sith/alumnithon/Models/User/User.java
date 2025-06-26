@@ -6,13 +6,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.sith.alumnithon.Models.Interest.Interest;
-import com.sith.alumnithon.Models.Language.UserLanguageInterest;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sith.alumnithon.Models.Event.Event;
+import com.sith.alumnithon.Models.Interest.Interest;
+import com.sith.alumnithon.Models.Language.UserLanguageInterest;
 import com.sith.alumnithon.Models.Language.UserLanguageSpoken;
 
 import jakarta.persistence.CascadeType;
@@ -100,17 +100,6 @@ public class User implements UserDetails{
     )
     private Set<Event> events = new HashSet<>();
 
-
-    public void follow(User userToFollow) {
-        this.following.add(userToFollow);
-        userToFollow.getFollowers().add(this);
-    }
-
-    public void unfollow(User userToUnfollow) {
-        this.following.remove(userToUnfollow);
-        userToUnfollow.getFollowers().remove(this);
-    }
-
     @ManyToMany
     @JoinTable(
             name = "user_interest",
@@ -118,6 +107,35 @@ public class User implements UserDetails{
             inverseJoinColumns = @JoinColumn(name = "interest_id")
     )
     private Set<Interest> interests = new HashSet<>();
+
+    // Metodos
+
+    public boolean follow(User userToFollow) {
+        if (userToFollow == null || userToFollow.equals(this)) {
+            return false;
+        }
+
+        boolean added = this.following.add(userToFollow);
+        if (added) {
+            userToFollow.getFollowers().add(this);
+        }
+        return added;
+    }
+
+
+    public boolean unfollow(User userToUnfollow) {
+    if (userToUnfollow == null || userToUnfollow.equals(this)) {
+        return false;
+    }
+
+    boolean removed = this.following.remove(userToUnfollow);
+    if (removed) {
+        userToUnfollow.getFollowers().remove(this);
+    }
+    return removed;
+}
+
+
 
     // Setters and Getters
     
@@ -246,5 +264,21 @@ public class User implements UserDetails{
 
     public void setLanguagesInterest(List<UserLanguageInterest> languagesInterest) {
         this.languagesInterest = languagesInterest;
+    }
+
+    public List<Event> getCreatedEvents() {
+        return createdEvents;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public Set<Interest> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(Set<Interest> interests) {
+        this.interests = interests;
     }
 }

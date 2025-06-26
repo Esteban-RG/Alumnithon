@@ -11,8 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -55,6 +57,14 @@ public class UserLanguageSpoken {
 
     public void setLanguage(Language language) {
         this.language = language;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     
