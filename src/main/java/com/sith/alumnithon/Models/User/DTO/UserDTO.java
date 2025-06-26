@@ -9,6 +9,7 @@ import com.sith.alumnithon.Models.Language.DTO.LanguageSpokenDTO;
 import com.sith.alumnithon.Models.User.Country;
 
 public record UserDTO(
+    Long id,
     String firstname,
     String lastname,
     String username,

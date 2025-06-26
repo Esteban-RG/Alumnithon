@@ -108,15 +108,33 @@ public class User implements UserDetails{
     )
     private Set<Interest> interests = new HashSet<>();
 
-    public void follow(User userToFollow) {
-        this.following.add(userToFollow);
-        userToFollow.getFollowers().add(this);
+    // Metodos
+
+    public boolean follow(User userToFollow) {
+        if (userToFollow == null || userToFollow.equals(this)) {
+            return false;
+        }
+
+        boolean added = this.following.add(userToFollow);
+        if (added) {
+            userToFollow.getFollowers().add(this);
+        }
+        return added;
     }
 
-    public void unfollow(User userToUnfollow) {
-        this.following.remove(userToUnfollow);
+
+    public boolean unfollow(User userToUnfollow) {
+    if (userToUnfollow == null || userToUnfollow.equals(this)) {
+        return false;
+    }
+
+    boolean removed = this.following.remove(userToUnfollow);
+    if (removed) {
         userToUnfollow.getFollowers().remove(this);
     }
+    return removed;
+}
+
 
 
     // Setters and Getters
