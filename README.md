@@ -28,6 +28,11 @@ Aplicación web progresiva que facilita el intercambio lingüístico y cultural 
 | 🗄️ Base de datos | H2, PostgreSQL                                                                     |
 | 🛠️ Build Tool    | Git, GitHub, Postman, Figma, Docker                                                |
 
+## 🎨 Diseño UI
+
+Disponible en [Figma](https://www.figma.com/design/dTYdHjJXO4AHbo5XepkHap/BabeLink-Responsive?node-id=1-3&t=LcYYgOXK6toucMYq-1).
+Realizado por Diego O. Mateus
+
 ---
 
 # Funcionalidades del proyecto
