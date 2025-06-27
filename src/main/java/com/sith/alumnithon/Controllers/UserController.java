@@ -1,7 +1,6 @@
 package com.sith.alumnithon.Controllers;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -83,6 +82,26 @@ public class UserController {
         String username = auth.getName();
 
         userService.unfollowUser(username, targetId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Endpoint para agregar un interes")
+    @PutMapping("/interest/{targetId}")
+    public ResponseEntity<Void> addInterest(@PathVariable Long targetId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        userService.addInterest(username, targetId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Endpoint para eliminar un interes")
+    @DeleteMapping("/interest/{targetId}")
+    public ResponseEntity<Void> removeInterest(@PathVariable Long targetId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+
+        userService.romoveInterest(username, targetId);
         return ResponseEntity.noContent().build();
     }
     
