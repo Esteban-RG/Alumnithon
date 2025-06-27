@@ -12,7 +12,7 @@ const Profile = ({ setIsAuthenticated }) => {
   ];
 
   return (
-    <div className="bg-orange-50 min-h-screen font-sans">
+    <div className="bg-orange-50 min-h-screen font-inter">
       <Header />
       <main className="px-6 pb-24 -mt-8">
         <h2 className="text-3xl font-bold text-black text-center mb-4">Perfil</h2>

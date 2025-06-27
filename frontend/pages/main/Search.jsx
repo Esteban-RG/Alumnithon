@@ -11,7 +11,7 @@ const Search = () => {
   ];
 
   return (
-    <div className="bg-orange-50 min-h-screen font-sans">
+    <div className="bg-orange-50 min-h-screen font-inter">
       <Header />
       <main className="px-6 pb-24">
         <MainTitle

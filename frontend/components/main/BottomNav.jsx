@@ -1,8 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 
 const classesLink = `flex flex-col items-center justify-center h-full cursor-pointer flex-1`;
-const classesIcon = `w-6 h-6 mx-auto mb-1`;
-const classesSpan = `text-xs font-medium`;
+const classesIcon = `w-6 h-6 mx-auto my-2`;
+const classesSpan = `text-xs font-medium mb-1`;
 
 const navItems = [
   {
@@ -35,7 +35,7 @@ const BottomNav = () => {
   const location = useLocation();
 
   return (
-    <footer className="fixed bottom-0 left-0 w-full h-16 bg-primary flex">
+    <footer className="fixed bottom-0 left-0 w-full h-16 bg-primary flex md:hidden">
       {navItems.map((item) => {
         const isActive = location.pathname === item.to;
         const linkClasses = `${classesLink} ${
