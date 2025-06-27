@@ -1,11 +1,15 @@
 package com.sith.alumnithon.Models.Event.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
+import com.sith.alumnithon.Models.CommunicationChannel.CommunicationChannel;
 import com.sith.alumnithon.Models.Event.CountryEvent;
 import com.sith.alumnithon.Models.Event.Event;
 import com.sith.alumnithon.Models.Event.TypeEvent;
 import com.sith.alumnithon.Models.Language.Language;
+import com.sith.alumnithon.Models.Language.Level;
 
 public record ListEventsDTO(
 
@@ -14,11 +18,11 @@ public record ListEventsDTO(
         TypeEvent type,
         CountryEvent country,
         Language language,
-        String languageLevel,
+        Level languageLevel,
         LocalDateTime startDate,
         LocalDateTime endDate,
         Long idMentor
-
+        
 ) {
 
     public ListEventsDTO(Event event) {

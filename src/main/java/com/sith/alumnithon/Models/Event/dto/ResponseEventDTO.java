@@ -6,6 +6,7 @@ import com.sith.alumnithon.Models.Event.CountryEvent;
 import com.sith.alumnithon.Models.Event.Event;
 import com.sith.alumnithon.Models.Event.TypeEvent;
 import com.sith.alumnithon.Models.Language.Language;
+import com.sith.alumnithon.Models.Language.Level;
 
 public record ResponseEventDTO(
 
@@ -15,7 +16,7 @@ public record ResponseEventDTO(
         TypeEvent type,
         CountryEvent country,
         Language language,
-        String languageLevel,
+        Level languageLevel,
         LocalDateTime startDate,
         LocalDateTime endDate,
         Long idMentor
