@@ -2,6 +2,7 @@ import Header from "../../components/main/Header";
 import MainTitle from "../../components/main/MainTitle";
 import ActivityCard from "../../components/main/ActivityCard";
 import BottomNav from "../../components/main/BottomNav";
+import Sidebar from "../../components/main/SideBar";
 
 const Dashboard = () => {
   const activities = [
@@ -24,21 +25,25 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="bg-orange-50 min-h-screen font-sans">
-      <Header />
-      <main className="px-6 pb-24">
-        <MainTitle
-          title="¡Bienvenido, Usuario!"
-          buttonText="Empezar a explorar"
-        />
-        <h2 className="text-2xl font-bold text-black mb-4">Actividades cerca de ti</h2>
-        <div className="space-y-4">
-          {activities.map((activity, index) => (
-            <ActivityCard key={index} activity={activity} showJoinButton={true} />
+    <div className="bg-background min-h-screen font-inter">
+      <Header className="" />
+      <div className="flex flex-row">
+        <Sidebar />
 
-          ))}
-        </div>
-      </main>
+        <main className="px-6 pb-24">
+          <MainTitle
+            title="¡Bienvenido, Usuario!"
+            buttonText="Empezar a explorar"
+          />
+          <h2 className="text-2xl font-bold text-black mb-4">Actividades cerca de ti</h2>
+          <div className="space-y-4">
+            {activities.map((activity, index) => (
+              <ActivityCard key={index} activity={activity} showJoinButton={true} />
+
+            ))}
+          </div>
+        </main>
+      </div>
       <BottomNav />
     </div>
   );
