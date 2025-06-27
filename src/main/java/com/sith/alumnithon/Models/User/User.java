@@ -71,7 +71,7 @@ public class User implements UserDetails{
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    @OneToMany(mappedBy = "moderator", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "mentor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Event> createdEvents;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
