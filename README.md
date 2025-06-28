@@ -26,7 +26,7 @@ Aplicación web progresiva que facilita el intercambio lingüístico y cultural 
 | 🧠 Backend       | Java 17, Spring Boot 3, Maven, Spring Data JPA, Spring Security con JWT, SpringDoc |
 | 🎨 Frontend      | React, Vite, React Router, TailwindCSS                                             |
 | 🗄️ Base de datos | H2, PostgreSQL                                                                     |
-| 🛠️ Build Tool    | Git, GitHub, Postman, Figma, Docker                                                |
+| 🛠️ Build Tool    | Git, GitHub, Docker                                                                |
 
 ## 🎨 Diseño UI
 
