@@ -124,17 +124,26 @@ public class User implements UserDetails{
 
 
     public boolean unfollow(User userToUnfollow) {
-    if (userToUnfollow == null || userToUnfollow.equals(this)) {
-        return false;
+        if (userToUnfollow == null || userToUnfollow.equals(this)) {
+            return false;
+        }
+
+        boolean removed = this.following.remove(userToUnfollow);
+        if (removed) {
+            userToUnfollow.getFollowers().remove(this);
+        }
+        return removed;
     }
 
-    boolean removed = this.following.remove(userToUnfollow);
-    if (removed) {
-        userToUnfollow.getFollowers().remove(this);
+    public boolean addInterest(Interest interestToAdd){
+        boolean added = this.interests.add(interestToAdd);
+        return added;
     }
-    return removed;
-}
 
+    public boolean removeInterest(Interest interesttoRemove){
+        boolean removed = this.interests.remove(interesttoRemove);
+        return removed;
+    }
 
 
     // Setters and Getters

@@ -7,9 +7,11 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.sith.alumnithon.Mappers.UserMapper;
+import com.sith.alumnithon.Models.Interest.Interest;
 import com.sith.alumnithon.Models.User.User;
 import com.sith.alumnithon.Models.User.DTO.PersonalInfoDTO;
 import com.sith.alumnithon.Models.User.DTO.UserDTO;
+import com.sith.alumnithon.Repositories.InterestRepository;
 import com.sith.alumnithon.Repositories.UserRepository;
 
 import jakarta.transaction.Transactional;
@@ -20,6 +22,7 @@ import lombok.AllArgsConstructor;
 public class UserService {
 
     private UserRepository userRepository;
+    private InterestRepository interestRepository;
     private UserMapper userMapper;
 
     @Transactional
@@ -69,6 +72,26 @@ public class UserService {
 
         if (follower.unfollow(followed)) {
             userRepository.save(follower);
+        }
+    }
+
+    @Transactional
+    public void addInterest(String username , Long interestId){
+        User user = userRepository.findByUsername(username).orElseThrow( () -> new RuntimeException("User not found"));
+        Interest interest = interestRepository.findById(interestId).orElseThrow( () -> new RuntimeException("Interest not found"));
+
+        if (user.addInterest(interest)){
+            userRepository.save(user);
+        }
+    }
+
+    @Transactional
+    public void romoveInterest(String username , Long interestId){
+        User user = userRepository.findByUsername(username).orElseThrow( () -> new RuntimeException("User not found"));
+        Interest interest = interestRepository.findById(interestId).orElseThrow( () -> new RuntimeException("Interest not found"));
+
+        if (user.removeInterest(interest)){
+            userRepository.save(user);
         }
     }
 
