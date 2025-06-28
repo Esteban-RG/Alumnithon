@@ -26,7 +26,7 @@ Aplicación web progresiva que facilita el intercambio lingüístico y cultural 
 | 🧠 Backend       | Java 17, Spring Boot 3, Maven, Spring Data JPA, Spring Security con JWT, SpringDoc |
 | 🎨 Frontend      | React, Vite, React Router, TailwindCSS                                             |
 | 🗄️ Base de datos | H2, PostgreSQL                                                                     |
-| 🛠️ Build Tool    | Git, GitHub, Docker                                                                |
+| 🛠️ Build Tool    | Git, GitHub, Postman, Figma, Docker                                                |
 
 ## 🎨 Diseño UI
 
@@ -120,21 +120,6 @@ npm install
 ```bash
 npm start
 ```
-
-- Credenciales de prueba
-
-| Usuario | Password |
-|---------|----------|
-| admin   | admin    |
-| user 1  | user1    |
-| user 2  | user2    |
-| user 3  | user3    |
-| user 4  | user4    |
-| user 5  | user5    |
-| user 6  | user6    |
-| user 7  | user7    |
-| user 8  | user8    |
-| user 9  | user9    |
 
 ---
 

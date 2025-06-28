@@ -1,5 +1,8 @@
 package com.sith.alumnithon.Models.Event.dto;
 
+import com.sith.alumnithon.Models.Interest.Interest;
+import com.sith.alumnithon.Models.Language.Language;
+import com.sith.alumnithon.Models.Language.Level;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -8,6 +11,7 @@ import com.sith.alumnithon.Models.Event.CountryEvent;
 import com.sith.alumnithon.Models.Event.TypeEvent;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public record RegisterEventDTO(
 
@@ -23,11 +27,11 @@ public record RegisterEventDTO(
         @NotNull(message = "Please choose a country for mentoring")
         CountryEvent country,
 
-        @NotBlank(message = "Please choose a language")
-        String language,
+        @NotNull(message = "Please choose a language")
+        Language language,
 
-        @NotBlank(message = "Please choose your language level")
-        String languageLevel,
+        @NotNull(message = "Please choose your language level")
+        Level languageLevel,
 
         @NotNull(message = "Please introduce a date to start the mentoring")
         @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -38,7 +42,9 @@ public record RegisterEventDTO(
         LocalDateTime endDate,
 
         @NotNull(message = "Please introduce an id of mentor")
-        Long idMentor
+        Long idMentor,
 
+        @NotNull(message = "Please introduce at least an interests")
+        Set<Interest> interests
 ) {
 }
