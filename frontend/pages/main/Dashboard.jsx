@@ -26,7 +26,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-background min-h-screen font-inter">
-      <Header className="" />
+      <Header />
       <div className="flex flex-row">
         <Sidebar />
 

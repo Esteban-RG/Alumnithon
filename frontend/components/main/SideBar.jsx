@@ -19,16 +19,16 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <aside className="hidden md:sticky md:top-0 md:flex flex-col justify-between bg-primary text-white text-lg h-screen w-24 hover:w-100 transition-all duration-300 group z-20 rounded-br-xl">
+    <aside className="hidden md:sticky md:top-0 md:flex flex-col justify-between bg-primary text-white text-base h-screen w-18 hover:w-64 transition-all duration-300 group z-20 rounded-br-xl">
       {/* Sección de navegación */}
-      <div className="flex flex-col gap-4 px-2">
+      <div className="flex flex-col">
         {navItems.map((item) => {
           const isActive = location.pathname === item.to;
           return (
             <NavLink
               key={item.to}
               to={item.to}
-              className={`flex items-center gap-4 p-2 transition-colors ${
+              className={`w-full flex items-center gap-4 p-4 lg:py-5 transition-colors ${
                 isActive
                   ? "bg-background text-primary"
                   : "hover:bg-secondary text-white"
@@ -39,7 +39,7 @@ const Sidebar = () => {
                 alt={item.label}
                 className="w-9 h-9 lg:w-10 lg:h-10"
               />
-              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pr-8">
                 {item.label}
               </span>
             </NavLink>
@@ -48,13 +48,13 @@ const Sidebar = () => {
       </div>
 
       {/* Ícono de perfil abajo */}
-      <div className="p-2">
+      <div className="pb-4">
         <NavLink
           to="/profile"
           className={({ isActive }) =>
-            `flex items-center gap-4 p-2 rounded transition-colors ${
+            `w-full flex items-center gap-4 p-4 transition-colors ${
               isActive
-                ? "bg-background text-primary rounded-bl-xl"
+                ? "bg-background text-primary"
                 : "hover:bg-white/10 text-white"
             }`
           }

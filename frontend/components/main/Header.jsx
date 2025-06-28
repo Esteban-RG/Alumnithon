@@ -4,7 +4,7 @@ import HeaderBuscar from "./HeaderBuscar";
 
 const Header = () => {
   return (
-    <header className="bg-black py-4 md:px-8 flex flex-col items-center md:py-5 md:flex-row md:justify-between lg:py-6">
+    <header className="bg-primary py-4 md:px-8 flex flex-col items-center md:py-5 md:flex-row md:justify-between lg:py-6">
       <h1 className="text-3xl font-inter font-extrabold italic text-white text-center md:text-4xl md:text-left">
         <Link to="/" className="no-underline hover:no-underline focus:no-underline">
           BabeLink

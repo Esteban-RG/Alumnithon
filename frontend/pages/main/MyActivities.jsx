@@ -2,6 +2,7 @@ import Header from "../../components/main/Header";
 import MainTitle from "../../components/main/MainTitle";
 import ActivityCard from "../../components/main/ActivityCard";
 import BottomNav from "../../components/main/BottomNav";
+import Sidebar from "../../components/main/SideBar";
 
 const MyActivities = () => {
   const myActivities = [
@@ -22,18 +23,21 @@ const MyActivities = () => {
   ];
 
   return (
-    <div className="bg-orange-50 min-h-screen font-inter">
+    <div className="bg-background min-h-screen font-inter">
       <Header />
-      <main className="px-6 pb-24">
-        <MainTitle
-          title="Mis Actividades"
-          buttonText="Crear Actividad"
-        />
-        <div className="space-y-4">
-          <ActivityCard activity={myActivities[0]} showDeleteButton={true} creationDate="Junio 17, 2025" />
-          <ActivityCard activity={myActivities[1]} showDeleteButton={true} creationDate="Junio 8, 2025" />
-        </div>
-      </main>
+      <div className="flex flex-row">
+        <Sidebar />
+        <main className="px-6 pb-24">
+          <MainTitle
+            title="Mis Actividades"
+            buttonText="Crear Actividad"
+          />
+          <div className="space-y-4">
+            <ActivityCard activity={myActivities[0]} showDeleteButton={true} creationDate="Junio 17, 2025" />
+            <ActivityCard activity={myActivities[1]} showDeleteButton={true} creationDate="Junio 8, 2025" />
+          </div>
+        </main>
+      </div>
       <BottomNav />
     </div>
   );

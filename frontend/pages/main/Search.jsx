@@ -35,7 +35,7 @@ const Search = () => {
             </div>
           </div>
           <div className="pt-4">
-            <button className="w-full bg-orange-200 text-black font-semibold rounded-lg py-3 
+            <button className="w-full bg-surface text-black font-semibold rounded-lg py-3 
                                 border border-black">
               Buscar
             </button>

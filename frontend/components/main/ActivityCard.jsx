@@ -20,12 +20,12 @@ const ActivityCard = ({ activity, showJoinButton, showDeleteButton, creationDate
       {creationDate && <p className="text-xs text-gray-500 mt-3">Fecha de creación: {creationDate}</p>}
       <div className="flex justify-end mt-4">
         {showJoinButton && (
-          <button className="bg-orange-200 text-black border border-black font-semibold rounded-lg px-8 py-2 text-sm">
+          <button className="bg-surface text-black border border-black font-semibold rounded-lg px-8 py-2 text-sm cursor-pointer">
             Unirme
           </button>
         )}
         {showDeleteButton && (
-          <button className="bg-rose-300 text-black border border-black font-semibold rounded-lg px-8 py-2 text-sm">
+          <button className="bg-rose-300 text-black border border-black font-semibold rounded-lg px-8 py-2 text-sm cursor-pointer">
             Borrar
           </button>
         )}
