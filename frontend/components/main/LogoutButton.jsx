@@ -21,7 +21,8 @@ const LogoutButton = ({ setIsAuthenticated }) => {
                         text-sm
                         font-semibold
                         hover:underline
-                        mx-auto"
+                        mx-auto
+                        cursor-pointer"
       onClick={handleLogout}>
       Cerrar Sesión
     </button>
