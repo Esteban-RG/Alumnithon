@@ -121,6 +121,21 @@ npm install
 npm start
 ```
 
+- Credenciales de prueba
+
+| Usuario | Password |
+|---------|----------|
+| admin   | admin    |
+| user 1  | user1    |
+| user 2  | user2    |
+| user 3  | user3    |
+| user 4  | user4    |
+| user 5  | user5    |
+| user 6  | user6    |
+| user 7  | user7    |
+| user 8  | user8    |
+| user 9  | user9    |
+
 ---
 
 <h1>Desarrolladores del Proyecto 💻</h1>
