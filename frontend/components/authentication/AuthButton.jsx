@@ -6,6 +6,7 @@ const AuthButton = ({ value }) => {
 		font-bold 
 		py-3 
 		rounded-lg
+		cursor-pointer
   `;
 
 	return <button className={classes}>{value}</button>;
